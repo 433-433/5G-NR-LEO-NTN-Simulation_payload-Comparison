@@ -1,0 +1,605 @@
+============================================================
+  PHASE 1: System and Environment Setup (v3 — FINAL)
+  LEO NTN Scenario — 5G NR Performance Analysis
+============================================================
+
+--- Section 1: Creating satellite scenario ---
+  Start time    : 15-Jun-2024
+  Stop time     : 16-Jun-2024
+  Duration      : 24.0 hours (24h forced for full Earth rotation)
+  Time step     : 30 seconds
+  Orbital period: 5792.3 seconds (96.5 minutes)
+
+--- Section 2: Deploying Walker Delta constellation ---
+  Walker 72/6/1 at 600 km, 53 deg inclination
+  RAAN spacing=60 deg, TA spacing=30 deg, Phase offset=5.0 deg
+
+--- Section 3: Deploying ground infrastructure ---
+  Gateways: 8
+  UEs: 16 (2 per gateway)
+
+--- Section 4: Creating access links ---
+  Done.
+
+--- Section 5: Computing slant range geometry ---
+  Slant range at 10 deg : 1931.6 km | prop delay: 6.44 ms
+  Slant range at 90 deg : 600.0 km | prop delay: 2.00 ms
+  FSPL range            : 164.2 dB (10 deg) to 154.0 dB (90 deg)
+
+--- Section 6: Running time-series simulation ---
+  Time steps: 2881 | Duration: 24.0 hours | dt: 30 s
+  Satellites: 72 | UEs: 16
+
+  Step 6a: Computing elevation via aer(sat, UE) — no time arg...
+    Satellite 12/72 processed
+    Satellite 24/72 processed
+    Satellite 36/72 processed
+    Satellite 48/72 processed
+    Satellite 60/72 processed
+    Satellite 72/72 processed
+    Complete in 5.1 s
+
+  Step 6b: DIAGNOSTIC — elevation statistics...
+    GLOBAL max elevation: 89.1 deg
+    UE_Accra1      : max_elev=  89.0 deg, points > 10 deg: 3118
+    UE_Accra2      : max_elev=  89.0 deg, points > 10 deg: 3111
+    UE_Kumasi1     : max_elev=  88.8 deg, points > 10 deg: 3134
+    UE_Kumasi2     : max_elev=  88.1 deg, points > 10 deg: 3135
+    UE_Tamale1     : max_elev=  89.1 deg, points > 10 deg: 3180
+    UE_Tamale2     : max_elev=  87.3 deg, points > 10 deg: 3175
+    UE_Bolga1      : max_elev=  86.6 deg, points > 10 deg: 3201
+    UE_Bolga2      : max_elev=  86.8 deg, points > 10 deg: 3202
+    UE_Takoradi1   : max_elev=  87.9 deg, points > 10 deg: 3111
+    UE_Takoradi2   : max_elev=  86.5 deg, points > 10 deg: 3109
+    UE_Sunyani1    : max_elev=  87.8 deg, points > 10 deg: 3137
+    UE_Sunyani2    : max_elev=  87.6 deg, points > 10 deg: 3146
+    UE_Ho1         : max_elev=  88.3 deg, points > 10 deg: 3119
+    UE_Ho2         : max_elev=  87.9 deg, points > 10 deg: 3124
+    UE_WA1         : max_elev=  87.2 deg, points > 10 deg: 3198
+    UE_WA2         : max_elev=  86.8 deg, points > 10 deg: 3200
+
+  Step 6c: Selecting best satellite per UE per time step...
+  Step 6d: Computing Doppler...
+  Section 6 complete.
+
+--- Section 7: Analyzing handovers ---
+  Results over 24 hours:
+  UE              | Handovers | Rate/hr | Visibility | Avg Pass
+  ----------------------------------------------------------------------
+  UE_Accra1       |   272     |  11.3   |   68.1%    |   315 s
+  UE_Accra2       |   273     |  11.4   |   67.9%    |   314 s
+  UE_Kumasi1      |   260     |  10.8   |   71.5%    |   331 s
+  UE_Kumasi2      |   264     |  11.0   |   71.0%    |   326 s
+  UE_Tamale1      |   245     |  10.2   |   79.6%    |   352 s
+  UE_Tamale2      |   239     |  10.0   |   79.1%    |   361 s
+  UE_Bolga1       |   266     |  11.1   |   83.7%    |   325 s
+  UE_Bolga2       |   265     |  11.0   |   83.3%    |   326 s
+  UE_Takoradi1    |   276     |  11.5   |   66.6%    |   310 s
+  UE_Takoradi2    |   276     |  11.5   |   66.6%    |   310 s
+  UE_Sunyani1     |   248     |  10.3   |   73.4%    |   348 s
+  UE_Sunyani2     |   253     |  10.5   |   73.1%    |   341 s
+  UE_Ho1          |   262     |  10.9   |   70.6%    |   327 s
+  UE_Ho2          |   264     |  11.0   |   70.4%    |   325 s
+  UE_WA1          |   255     |  10.6   |   81.6%    |   339 s
+  UE_WA2          |   253     |  10.5   |   81.4%    |   342 s
+
+--- Section 8: Validation checks ---
+  [CHECK] Orbital period = 5792.3 s... PASS
+  [CHECK] Slant range at 90 deg = 600.0 km... PASS
+  [CHECK] Slant range at 10 deg = 1931.6 km... PASS
+  [CHECK] Mean visibility = 74.3%... PASS
+  [CHECK] Max Doppler = 212.9 kHz... PASS
+  [CHECK] Mean HO rate = 10.9/hr... PASS
+
+--- Section 9: Generating plots ---
+  Saved: phase1_elevation_vs_time.png
+  Saved: phase1_slant_range_vs_elevation.png
+  Saved: phase1_fspl_vs_elevation.png
+  Saved: phase1_handover_events.png
+  Saved: phase1_doppler_vs_time.png
+  Saved: phase1_doppler_all_ues.png
+  Saved: phase1_visibility.png
+
+--- Section 10: Exporting results ---
+  Saved: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase1_results.mat
+
+--- Section 11: Launching 3D viewer ---
+Warning: Unable to access the Internet, showing 'darkwater' instead of 'satellite'. See Access Basemaps and Terrain. 
+
+============================================================
+  PHASE 1 COMPLETE (v3)
+============================================================
+  Constellation  : Walker 72/6/1 at 600 km
+  Ground infra   : 8 gateways, 16 UEs across Ghana
+  Sim duration   : 24 hours
+  Max Doppler    : 212.9 kHz
+  Mean HO rate   : 10.9 handovers/hour
+  Mean visibility: 74.3%
+
+  Load in Phase 2: load('results/phase1_results.mat')
+============================================================
+>> 
+
+
+
+============================================================
+  PHASE 2: NTN Channel Modeling
+  LEO NTN — 5G NR Performance Analysis
+============================================================
+
+--- Loading Phase 1 results ---
+  Loaded: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase1_results.mat
+
+--- Section 1: Doppler Shift Analysis ---
+  Satellite orbital Doppler (via dopplerShiftCircularOrbit):
+    At 10 deg elevation: 45.4 kHz
+    At 50 deg elevation: 29.6 kHz
+    At 90 deg elevation: 0.0 kHz (zenith)
+    UE mobility Doppler (3 km/h): 5.6 Hz
+
+  Reference operating point (elevation = 50 deg):
+    Satellite Doppler : 29.6 kHz
+    UE Doppler        : 5.6 Hz
+    Total max Doppler : 29.6 kHz
+
+--- Section 2: NTN-TDL Wideband Channel Configuration ---
+  Configuring NTN-TDL channels (sample rate = 15.36 MHz):
+  Environment    | Profile      | Delay Spread | Description
+  ---------------------------------------------------------------------------
+  Dense Urban    | NTN-TDL-A    |    200 ns    | NLoS, Rayleigh fading, high delay spread
+  Urban          | NTN-TDL-B    |     75 ns    | Weak LoS, moderate fading
+  Suburban       | NTN-TDL-C    |     50 ns    | LoS dominant, medium Rician K-factor
+  Rural          | NTN-TDL-D    |     20 ns    | Strong LoS, high Rician K-factor
+
+  NOTE: All channels use the SAME Doppler configuration.
+  The difference between transparent/regenerative payloads is
+  modeled in Phase 4 through signal chain, NOT channel profile.
+
+--- Section 3: Generating channel impulse responses ---
+  Saved: phase2_power_delay_profiles.png
+--- Section 4: Spectrum comparison ---
+  Saved: phase2_channel_spectra.png
+--- Section 5: Doppler vs Elevation ---
+  Saved: phase2_doppler_vs_elevation.png
+
+--- Section 6: P.681 Narrowband LMS Channel ---
+  p681LMSChannel available — configuring 3 environments.
+    P.681 Urban: mean=-2.0 dB, std=1.6 dB
+    P.681 Rural/Wooded: mean=0.2 dB, std=0.9 dB
+    P.681 Suburban: mean=-1.2 dB, std=0.9 dB
+  Saved: phase2_p681_fading.png
+
+--- Section 7: Channel comparison across environments ---
+  Saved: phase2_channel_comparison.png
+
+--- Section 8: Validation checks ---
+  [CHECK] Sat Doppler at 10 deg = 45.4 kHz (expected 24-48 kHz)... PASS
+  [CHECK] Sat Doppler at 90 deg = 0.0 kHz (expected ~0)... PASS
+  [CHECK] UE Doppler = 5.6 Hz (expected ~5.6 Hz at 3km/h, 2GHz)... PASS
+  [CHECK] NTN-TDL channels configured: 4 (expected 4)... PASS
+
+--- Section 9: Exporting results ---
+  Saved: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase2_results.mat
+
+============================================================
+  PHASE 2 COMPLETE
+============================================================
+  NTN-TDL channels: 4 environments configured
+    NTN-TDL-A (Dense Urban) : DS = 200 ns
+    NTN-TDL-B (Urban)       : DS = 75 ns
+    NTN-TDL-C (Suburban)    : DS = 50 ns
+    NTN-TDL-D (Rural)       : DS = 20 ns
+  Satellite Doppler range: 45.4 kHz (10 deg) to 0.0 kHz (90 deg)
+  UE mobility Doppler: 5.6 Hz
+  P.681 LMS channels: 3 environments configured
+
+  IMPORTANT: Both transparent and regenerative payloads
+  use the SAME channel profile for a given environment.
+  Payload differences are modeled in Phase 4.
+
+  Load in Phase 3: load('results/phase2_results.mat')
+============================================================
+>> 
+
+============================================================
+  PHASE 3: 5G NR Waveform Generation
+  LEO NTN — 5G NR Performance Analysis
+============================================================
+
+--- Loading Phase 2 results ---
+  Loaded: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase2_results.mat
+
+--- Section 1: SCS and Resource Block Configuration ---
+  Channel bandwidth: 10 MHz (20 MHz for 120 kHz SCS)
+  SCS (kHz)  | mu     | RBs        | BW Used      | Slot Duration
+  -----------------------------------------------------------------
+  15         | 0      | 52         | 10         MHz | 1.0000 ms
+  30         | 1      | 24         | 10         MHz | 0.5000 ms
+  60         | 2      | 11         | 10         MHz | 0.2500 ms
+  120        | 3      | 11         | 20         MHz | 0.1250 ms
+
+--- Section 2: Generating Downlink CP-OFDM Waveforms ---
+  [SCS=15 kHz] Waveform: 153600 samples | SR: 15.36 MHz | Grid: [624 x 140] | TBS: 14856 bits
+  [SCS=30 kHz] Waveform: 76800 samples | SR: 15.36 MHz | Grid: [288 x 140] | TBS: 6912 bits
+  [SCS=60 kHz] Waveform: 38400 samples | SR: 15.36 MHz | Grid: [132 x 140] | TBS: 3240 bits
+  [SCS=120 kHz] Waveform: 38408 samples | SR: 30.72 MHz | Grid: [132 x 140] | TBS: 3240 bits
+
+--- Section 3: Generating Uplink DFT-s-OFDM Waveforms ---
+  [SCS=15 kHz] Waveform: 153600 samples | SR: 15.36 MHz | Grid: [624 x 140] | TBS: 14856 bits
+  [SCS=30 kHz] Waveform: 76800 samples | SR: 15.36 MHz | Grid: [288 x 140] | TBS: 6912 bits
+  [SCS=60 kHz] Waveform: 38400 samples | SR: 15.36 MHz | Grid: [132 x 140] | TBS: 3240 bits
+  [SCS=120 kHz] Waveform: 38408 samples | SR: 30.72 MHz | Grid: [132 x 140] | TBS: 3240 bits
+
+--- Section 4: Spectrum visualization ---
+  Saved: phase3_dl_spectra.png
+  Saved: phase3_ul_spectra.png
+--- Section 5: Resource grid visualization ---
+  Saved: phase3_resource_grids.png
+
+--- Section 6: Waveform Summary ---
+  SCS      | DL Samples   | UL Samples   | DL SR      | DL TBS     | UL TBS    
+  ---------------------------------------------------------------------------
+  15       | 153600       | 153600       |   15.36 MHz |  14856 bits |  14856 bits
+  30       | 76800        | 76800        |   15.36 MHz |   6912 bits |   6912 bits
+  60       | 38400        | 38400        |   15.36 MHz |   3240 bits |   3240 bits
+  120      | 38408        | 38408        |   30.72 MHz |   3240 bits |   3240 bits
+
+  Theoretical Peak Throughput (single layer, 16QAM, rate 0.5):
+    SCS  15 kHz: TBS= 14856 bits/slot x  1000 slots/s =   14.86 Mbps
+    SCS  30 kHz: TBS=  6912 bits/slot x  2000 slots/s =   13.82 Mbps
+    SCS  60 kHz: TBS=  3240 bits/slot x  4000 slots/s =   12.96 Mbps
+    SCS 120 kHz: TBS=  3240 bits/slot x  8000 slots/s =   25.92 Mbps
+
+--- Section 7: Channel preview (Suburban NTN-TDL-C) ---
+  Saved: phase3_channel_preview.png
+
+--- Section 8: Validation checks ---
+  [CHECK] DL waveforms generated: 4 (expected 4)... PASS
+  [CHECK] UL waveforms generated: 4 (expected 4)... PASS
+  [CHECK] DL sample rate (15 kHz SCS) = 15.36 MHz (expected ~15.36)... PASS
+  [CHECK] Grid columns (15 kHz, 10 slots) = 140 (expected 140)... PASS
+  [CHECK] All DL TBS > 0... PASS (min=3240, max=14856 bits)
+
+--- Section 9: Exporting results ---
+  Saved: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase3_results.mat
+
+============================================================
+  PHASE 3 COMPLETE
+============================================================
+  Waveforms generated for 4 SCS values: [15 30 60 120 ] kHz
+  Downlink : CP-OFDM (nrPDSCH + nrOFDMModulate)
+  Uplink   : DFT-s-OFDM (nrPUSCH + nrOFDMModulate, TransformPrecoding=true)
+  Slots    : 10 per SCS
+  Modulation: 16QAM, Code rate ~0.5
+  Figures  : 4 (DL spectra, UL spectra, resource grids, channel preview)
+
+  Load in Phase 4: load('results/phase3_results.mat')
+============================================================
+>> 
+
+
+============================================================
+  PHASE 4: Payload Architecture Modeling
+  LEO NTN — 5G NR Performance Analysis
+============================================================
+
+--- Loading previous phase results ---
+  Phase 2 (channels) and Phase 3 (waveforms) loaded.
+
+--- Section 1: Link Budget Calculation ---
+  Elev   | Slant(km)  | FSPL(dB) | UL SNR(dB) | DL SNR(dB) | Feed SNR   | Casc SNR  
+  --------------------------------------------------------------------------------
+    10° |   1931.6   |  164.2   |    -13.0    |      1.5    |     48.3    |      0.8
+    20° |   1392.2   |  161.3   |    -10.1    |      4.4    |     51.2    |      3.1
+    30° |   1075.1   |  159.1   |     -7.9    |      6.6    |     53.4    |      4.6
+    50° |    760.8   |  156.1   |     -4.9    |      9.6    |     56.4    |      6.2
+    70° |    634.9   |  154.5   |     -3.3    |     11.2    |     58.0    |      6.9
+    90° |    600.0   |  154.0   |     -2.8    |     11.7    |     58.5    |      7.1
+
+  SNR advantage of regenerative over transparent:
+    At 10 deg: Regen=1.5 dB, Transp=0.8 dB, Advantage=0.7 dB
+    At 20 deg: Regen=4.4 dB, Transp=3.1 dB, Advantage=1.3 dB
+    At 30 deg: Regen=6.6 dB, Transp=4.6 dB, Advantage=2.0 dB
+    At 50 deg: Regen=9.6 dB, Transp=6.2 dB, Advantage=3.4 dB
+    At 70 deg: Regen=11.2 dB, Transp=6.9 dB, Advantage=4.3 dB
+    At 90 deg: Regen=11.7 dB, Transp=7.1 dB, Advantage=4.6 dB
+
+--- Section 2: Transparent Payload Signal Chain ---
+  Operating point: elevation=50 deg
+  Transparent cascaded SNR: 6.2 dB
+  Regenerative user-link SNR: 9.6 dB
+
+  Satellite Doppler at 50 deg: 29.6 kHz
+  Residual Doppler (5% after GNSS compensation): 1481.8 Hz
+
+  [SCS=15 kHz] Transparent chain complete — cascaded SNR=6.2 dB
+  [SCS=30 kHz] Transparent chain complete — cascaded SNR=6.2 dB
+  [SCS=60 kHz] Transparent chain complete — cascaded SNR=6.2 dB
+  [SCS=120 kHz] Transparent chain complete — cascaded SNR=6.2 dB
+
+--- Section 3: Regenerative Payload Signal Chain ---
+  [SCS=15 kHz] Regenerative chain complete — user SNR=9.6 dB
+  [SCS=30 kHz] Regenerative chain complete — user SNR=9.6 dB
+  [SCS=60 kHz] Regenerative chain complete — user SNR=9.6 dB
+  [SCS=120 kHz] Regenerative chain complete — user SNR=9.6 dB
+
+--- Section 4: SNR vs Elevation plots ---
+  Saved: phase4_link_budget.png
+--- Section 5: Received waveform comparison ---
+  Saved: phase4_rx_comparison.png
+
+--- Section 6: Uncoded BER preview (sanity check) ---
+  Saved: phase4_ber_preview.png
+  SNR degradation (transparent vs regenerative): 3.4 dB
+  NOTE: This is DERIVED from link budget, not hardcoded.
+
+--- Section 7: Architecture summary ---
+  Saved: phase4_architecture_summary.png
+
+--- Section 8: Validation checks ---
+  [CHECK] Regen SNR > Transp SNR at all elevations... PASS
+  [CHECK] Mean SNR advantage = 2.7 dB (expected 1-5 dB)... PASS
+  [CHECK] Feeder SNR > User SNR at 50 deg... PASS
+  [CHECK] Transparent waveforms: 4 (expected 4)... PASS
+  [CHECK] Regenerative waveforms: 4 (expected 4)... PASS
+
+--- Section 9: Exporting results ---
+  Saved: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase4_results.mat
+
+============================================================
+  PHASE 4 COMPLETE
+============================================================
+  Link budget computed for 6 elevation angles
+  At reference elevation (50 deg):
+    Transparent (cascaded) SNR : 6.2 dB
+    Regenerative (user link) SNR: 9.6 dB
+    SNR advantage              : 3.4 dB
+  Residual Doppler (transparent): 1481.8 Hz
+  Waveforms processed through both architectures: 4 SCS values
+
+  KEY: SNR difference is DERIVED from link budget,
+  not hardcoded. Both payloads use SAME channel (NTN-TDL-C).
+
+  Load in Phase 5: load('results/phase4_results.mat')
+============================================================
+>> 
+============================================================
+  PHASE 5: Latency Analysis
+  LEO NTN — 5G NR Performance Analysis
+============================================================
+
+  Phase 1 (geometry) and Phase 4 (payload) loaded.
+
+--- Section 1: Latency Component Definitions ---
+  Fixed delays:
+    UE processing      : 1.0 ms
+    GW processing      : 1.5 ms
+    Sat (transparent)  : 0.1 ms
+    Sat (regenerative) : 4.0 ms
+    Scheduling slots   : 4
+    HARQ K1 (regen)    : 6 slots
+    HARQ disabled for transparent (RTT exceeds timer)
+
+--- Section 2: Latency vs Elevation Angle ---
+  SCS    | Slot(ms) | Sched(ms)  | Transp(ms) | Regen(ms)  | Diff(ms)  
+  -----------------------------------------------------------------
+  15     | 1.000    | 4.00       | 11.68      | 11.54      | 0.14      
+  30     | 0.500    | 2.00       | 9.68       | 9.54       | 0.14      
+  60     | 0.250    | 1.00       | 8.68       | 8.54       | 0.14      
+  120    | 0.125    | 0.50       | 8.18       | 8.04       | 0.14      
+
+--- Section 3: Latency component breakdown ---
+  Saved: phase5_latency_breakdown.png
+  At 50 deg elevation (15 kHz SCS):
+    Transparent total : 11.7 ms
+    Regenerative total: 11.5 ms
+    Difference        : 0.1 ms (1% reduction)
+
+--- Section 4: Latency vs Elevation plots ---
+  Saved: phase5_latency_vs_elevation.png
+--- Section 5: Direct comparison ---
+  Saved: phase5_latency_comparison.png
+
+--- Section 6: HARQ Round-Trip Time Analysis ---
+  Saved: phase5_harq_rtt.png
+  HARQ RTT at 50 deg elevation:
+    SCS  15 kHz (regen) : 16.1 ms
+    SCS  30 kHz (regen) : 13.1 ms
+    SCS  60 kHz (regen) : 11.6 ms
+    SCS 120 kHz (regen) : 10.8 ms
+    Transparent (if enabled): 18.7 ms >> 8 ms standard timer
+    → HARQ disabled for transparent per TR 38.821 Sec 7.3
+
+--- Section 7: Latency CDF (Monte Carlo) ---
+  Saved: phase5_latency_cdf.png
+  Latency statistics (15 kHz SCS):
+    Transparent:  median=16.0 ms, 95th=19.5 ms, mean=15.8 ms
+    Regenerative: median=13.9 ms, 95th=15.7 ms, mean=13.8 ms
+    Median reduction: 2.1 ms (13%)
+
+--- Section 8: Validation checks ---
+  [CHECK] Transparent latency > Regenerative at all elevations... FAIL
+  [CHECK] Propagation delay at 10 deg ~6.4 ms... PASS (6.44 ms)
+  [CHECK] Propagation delay at 90 deg ~2.0 ms... PASS (2.00 ms)
+  [CHECK] Mean latency reduction = 4% (expected 25-50%)... WARNING
+  [CHECK] Transparent HARQ RTT >> 8 ms... PASS (18.7 ms)
+
+--- Section 9: Exporting results ---
+  Saved: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase5_results.mat
+
+============================================================
+  PHASE 5 COMPLETE
+============================================================
+  Latency computed for 41 elevations x 4 SCS values
+  At 50 deg elevation (15 kHz SCS):
+    Transparent : 11.7 ms
+    Regenerative: 11.5 ms
+    Reduction   : 0.1 ms (1%)
+  HARQ: Disabled for transparent, enabled for regenerative
+  Monte Carlo CDF: 10000 samples from Phase 1 elevation data
+
+  Load in Phase 6: load('results/phase5_results.mat')
+============================================================
+>> 
+============================================================
+  PHASE 6B: Additional Throughput Comparison Figures
+============================================================
+
+  Phase 6 and Phase 4 loaded.
+
+--- Figure 1: Combined throughput curves ---
+  Saved: phase6b_combined_throughput.png
+--- Figure 2: Multi-SNR bar chart ---
+  Saved: phase6b_transition_bars.png
+--- Figure 3: Throughput gain ---
+  Saved: phase6b_throughput_gain.png
+--- Figure 4: Throughput at link budget operating points ---
+  Saved: phase6b_throughput_vs_elevation.png
+--- Figure 5: Publication overview figure ---
+  Saved: phase6b_publication_overview.png
+
+============================================================
+  PHASE 6B COMPLETE
+============================================================
+  5 additional comparison figures generated.
+  Key insight: At SNR=6 dB, regenerative achieves full
+  throughput while transparent gets 0 Mbps across all SCS.
+  The 3.4 dB penalty makes transparent non-functional
+  in the critical 4-8 dB transition region.
+============================================================
+>> 
+============================================================
+  PHASE 7: Reliability (BLER) Analysis (v2 — Dual Env)
+  LEO NTN — 5G NR Performance Analysis (FINAL PHASE)
+============================================================
+
+  Phase 2 and Phase 4 loaded.
+
+--- Section 1: Configuration ---
+  SCS: 15 kHz | RBs: 52 | SNR: -2.0 to 16.0 dB
+  Slots per SNR point: 300 (smoother curves)
+  Transparent penalty: 3.4 dB
+  Environments: Suburban (NTN-TDL-C) + Rural (NTN-TDL-D)
+  MCS configurations: 5
+
+  ESTIMATED RUNTIME: 20-40 minutes. Please be patient.
+
+--- Section 2: BLER vs SNR — Dual Environment ---
+  TBS = 14344 bits | SR = 15.36 MHz
+
+  === Environment: Suburban (NTN-TDL-C) ===
+    Profile: NTN-TDL-C | Delay Spread: 50 ns | Slots: 300
+    SNR= -2.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR= -1.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR= -1.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR= -0.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  0.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  0.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  1.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  1.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  2.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  2.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  3.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  3.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  4.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  4.5 | R: BLER=0.757 | T: BLER=1.000
+    SNR=  5.0 | R: BLER=0.053 | T: BLER=1.000
+    SNR=  5.5 | R: BLER=0.073 | T: BLER=1.000
+    SNR=  6.0 | R: BLER=0.000 | T: BLER=1.000
+    SNR=  6.5 | R: BLER=0.000 | T: BLER=1.000
+    SNR=  7.0 | R: BLER=0.000 | T: BLER=1.000
+    SNR=  7.5 | R: BLER=0.000 | T: BLER=1.000
+    SNR=  8.0 | R: BLER=0.000 | T: BLER=0.700
+    SNR=  8.5 | R: BLER=0.000 | T: BLER=0.033
+
+  === Environment: Rural (NTN-TDL-D) ===
+    Profile: NTN-TDL-D | Delay Spread: 20 ns | Slots: 300
+    SNR= -2.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR= -1.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR= -1.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR= -0.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  0.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  0.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  1.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  1.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  2.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  2.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  3.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  3.5 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  4.0 | R: BLER=1.000 | T: BLER=1.000
+    SNR=  4.5 | R: BLER=0.930 | T: BLER=1.000
+    SNR=  5.0 | R: BLER=0.803 | T: BLER=1.000
+    SNR=  5.5 | R: BLER=0.340 | T: BLER=1.000
+    SNR=  6.0 | R: BLER=0.020 | T: BLER=1.000
+    SNR=  6.5 | R: BLER=0.167 | T: BLER=1.000
+    SNR=  7.0 | R: BLER=0.000 | T: BLER=1.000
+    SNR=  7.5 | R: BLER=0.000 | T: BLER=1.000
+    SNR=  8.0 | R: BLER=0.000 | T: BLER=0.810
+    SNR=  8.5 | R: BLER=0.003 | T: BLER=0.217
+    SNR=  9.0 | R: BLER=0.003 | T: BLER=0.040
+    SNR=  9.5 | R: BLER=0.053 | T: BLER=0.113
+    SNR= 14.5 | R: BLER=0.010 | T: BLER=0.000
+    SNR= 15.0 | R: BLER=0.007 | T: BLER=0.003
+
+  Section 2 complete in 3559.3 seconds (59.3 minutes).
+
+--- Section 3: BLER vs SNR — Multiple MCS (Suburban) ---
+  MCS 0 (QPSK R=0.12)
+    TBS = 1800 bits
+    10% BLER at SNR ~-4.0 dB
+  MCS 4 (QPSK R=0.44)
+    TBS = 6528 bits
+    10% BLER at SNR ~0.0 dB
+  MCS 10 (16QAM R=0.33)
+    TBS = 9992 bits
+    10% BLER at SNR ~3.0 dB
+  MCS 15 (16QAM R=0.48)
+    TBS = 14344 bits
+    10% BLER at SNR ~5.0 dB
+  MCS 21 (64QAM R=0.55)
+    TBS = 25104 bits
+    10% BLER at SNR ~11.0 dB
+
+--- Section 4: Uncoded BER reference ---
+  Done.
+
+--- Section 5: Generating plots ---
+  Saved: phase7_bler_suburban.png
+  Saved: phase7_bler_rural.png
+  Saved: phase7_bler_env_comparison.png
+  Saved: phase7_bler_multi_mcs.png
+  Saved: phase7_ber_coded_vs_uncoded.png
+  Saved: phase7_bler_harq.png
+
+--- Section 6: Validation checks ---
+
+  === Suburban (NTN-TDL-C) ===
+  10% BLER: Regen=5.0 dB | Transp=8.5 dB | Shift=3.5 dB
+  [CHECK] Regen BLER <= Transparent... PASS
+  [CHECK] BLER=0 at high SNR (regen)... PASS
+  [CHECK] BLER~1 at low SNR... PASS
+
+  === Rural (NTN-TDL-D) ===
+  10% BLER: Regen=6.0 dB | Transp=9.0 dB | Shift=3.0 dB
+  [CHECK] Regen BLER <= Transparent... PASS
+  [CHECK] BLER=0 at high SNR (regen)... PASS
+  [CHECK] BLER~1 at low SNR... PASS
+
+--- Section 7: Exporting results ---
+  Saved: C:\Users\HomePC\Desktop\NR_New Implementation\Phase1_v3_FINAL_2\phase1_v2\results\phase7_results.mat
+
+============================================================
+  PHASE 7 COMPLETE (v2 — Dual Environment)
+============================================================
+  Suburban (NTN-TDL-C):
+    10% BLER: Regen=5.0 dB | Transp=8.5 dB | Shift=3.5 dB
+  Rural (NTN-TDL-D):
+    10% BLER: Regen=6.0 dB | Transp=9.0 dB | Shift=3.0 dB
+  Slots per point: 300 (smooth curves)
+  Multi-MCS: 5 configurations
+  HARQ: Enabled for regen, disabled for transparent
+  Figures: 6
+
+  ============= PROJECT COMPLETE =============
+============================================================
+>> 

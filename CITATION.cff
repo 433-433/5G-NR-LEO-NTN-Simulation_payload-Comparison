@@ -1,0 +1,65 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite both the software (this repository)
+  and the paper below.
+title: >-
+  Performance Analysis of 5G NR in LEO Non-Terrestrial Networks —
+  simulation code (ICAST 2026 Paper 110)
+type: software
+authors:
+  - family-names: Lawerteh
+    given-names: Isaiah Amatey
+    email: isaiahanim20@gmail.com
+    affiliation: >-
+      Department of Telecommunications Engineering, Kwame Nkrumah University
+      of Science and Technology (KNUST), Kumasi, Ghana
+  - family-names: Egyir
+    given-names: Davies Kojo
+    affiliation: KNUST, Kumasi, Ghana
+  - family-names: Obeng
+    given-names: Kelvin Asante
+    affiliation: KNUST, Kumasi, Ghana
+  - family-names: Heanampong
+    given-names: Clement
+    affiliation: KNUST, Kumasi, Ghana
+  - family-names: Gadze
+    given-names: James Dzisi
+    affiliation: KNUST, Kumasi, Ghana
+license: MIT
+repository-code: >-
+  https://github.com/<your-username>/<your-repo>
+keywords:
+  - 5G NR
+  - Non-Terrestrial Networks
+  - LEO
+  - Transparent payload
+  - Regenerative payload
+  - 3GPP Release 17
+  - HARQ
+  - BLER
+  - Rapp SSPA
+  - MATLAB
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Performance Analysis of 5G NR in LEO Non-Terrestrial Networks:
+    A Physics-Based Comparative Study of Transparent and Regenerative
+    Payload Architectures
+  authors:
+    - family-names: Lawerteh
+      given-names: Isaiah Amatey
+    - family-names: Egyir
+      given-names: Davies Kojo
+    - family-names: Obeng
+      given-names: Kelvin Asante
+    - family-names: Heanampong
+      given-names: Clement
+    - family-names: Gadze
+      given-names: James Dzisi
+  collection-title: >-
+    Proc. 10th IEEE International Conference on Adaptive Science and
+    Technology (ICAST)
+  year: 2026
+  location:
+    name: Accra, Ghana
+  notes: Paper ID 110
